@@ -1,3 +1,4 @@
+from typing import Any
 from django.views.generic import (
     ListView,
     DetailView,
@@ -5,7 +6,7 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
-from.models import Post
+from.models import Post, Status
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import (
     LoginRequiredMixin,
@@ -16,6 +17,52 @@ from django.contrib.auth.mixins import (
 class PostListView(ListView):
     template_name = "posts/list.html"
     model = Post
+
+    def get_context_data(self, **kwarg):
+        context = super().get_context_data(**kwarg)
+
+        publish_status = Status.objects.get(name="published")
+        context["post_list"] = Post.objects.filter(
+            status = publish_status
+        ).order_by(
+            "created_on").reverse()
+        return context
+
+
+class DraftListView(LoginRequiredMixin, ListView):
+    template_name = "posts/list.html"
+    model = Post
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        draft_status = Status.objects.get(name="draft")
+        context["post_list"] = Post.objects.filter(
+            status = draft_status
+        ).order_by(
+            "created_on").reverse()
+        return context
+    
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
+class ArchivedListView(LoginRequiredMixin, ListView):
+    template_name = "posts/list.html"
+    model = Post
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        archived_status = Status.objects.get(name="archived")
+        context["post_list"] = Post.objects.filter(
+            status = archived_status
+        ).filter(
+            author = self.request.user
+        ).order_by(
+            "created_on").reverse()
+        return context
+
 
 class PostDetailView(DetailView):
     template_name = "posts/detail.html"

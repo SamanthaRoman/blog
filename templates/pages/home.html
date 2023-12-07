@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Blog{% endblock title %}
+
+{% block content %}
+<h1>
+    {% if user.is_authenticated %}
+    Hello, {{ user.username }}!
+    {% else %}
+    Hello, Guest!
+    {% endif %}
+</h1>
+<h3>Here you can access all our current posts as well as create new ones.</h3>
+<p>Navigate to the top of the page and select create new post to "create" a new post, select "read posts" to read
+    through our library of posts.</p>
+<b>Happy Posting!!</b>
+{% endblock content %}
