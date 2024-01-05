@@ -5,15 +5,104 @@
 {% load static %}
 
 {% block content %}
+<style>
+    body {
+        background: url("/static/img/digital.jpg");
+        background-size: cover;
+        background-position: top;
+        height: 100%;
+        margin-bottom: 100px;
+    }
 
-<div>
-    <img class="about-img" src="{% static 'img/about.jpg' %}" alt="About the team">
+    h2 {
+        text-align: center;
+        color: #ffffffd7;
+        text-shadow: #6f42c1 2px 0 10px;
+    }
+
+    .about-section {
+        position: relative;
+        height: 400px;
+        color: #495057
+    }
+
+    .about-text {
+        width: 60%;
+        padding: 20px;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgba(255, 255, 2555, 0.7);
+        border-radius: 10px;
+    }
+
+    .about-text p {
+        margin-top: 20px;
+    }
+
+    .card-container {
+        margin-top: 5px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .card {
+        width: 300px;
+        margin: 20px;
+        background-color: rgba(255, 255, 2555, 0.7);
+        position: relative;
+    }
+
+    a:hover {
+        transform: scale(1.1);
+    }
+
+    .card-img-top {
+        border-radius: 10px 10px 10px 10px;
+
+    }
+
+    .card-title {
+        color: #6f42c1;
+    }
+</style>
+<div class="about-section">
+    <div class="about-header"></div>
+    <!-- <img class="about-img" src="{% static 'img/aboutcover.png' %}" alt="About the team" style="width: 100%;"> -->
+    <div class="about-text">
+        <h2>Welcome to Our Blog!</h2>
+        <h3>We are a team of passionate developers making waves in the coding community!</h3>
+        <p>Our journey began in 2023 when we were just students at San Diego Global Knowledge University!</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate ea explicabo doloribus provident ipsa at
+            eveniet
+            nemo mollitia? Sequi delectus dolorem in libero magnam, accusantium excepturi quidem ut magni dolor.</p>
+    </div>
 </div>
-<h1>Welcome to our Blog!</h1>
-<h3>We are a team of passionate developers that are helping our community be heard!</h3>
 
-<p>Our story started in 2023 when we just students in San Diego Global Knowledge University!</p>
-<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate ea explicabo doloribus provident ipsa at eveniet
-    nemo mollitia? Sequi delectus dolorem in libero magnam, accusantium excepturi quidem ut magni dolor.</p>
+<div class="">
+    <h2>Meet the Team</h2>
+    <div class="card-container">
+        <a>
+            <div class="card">
+                <img class="card-img-top" src="{% static 'img/teammember1.jpg' %}" alt="Team member one">
+                <div class="card-body">
+                    <h5 class="card-title">John Doe</h5>
+                    <p class="card-text">Lead Developer</p>
+                </div>
+            </div>
+        </a>
+        <a>
+            <div class="card">
+                <img class="card-img-top" src="{% static 'img/teammember2.jpg' %}" alt="Team member tw0">
+                <div class="card-body">
+                    <h5 class="card-title">Jane Smith</h5>
+                    <p class="card-text">UI/UX Designer</p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
 
 {% endblock content %}

@@ -2,14 +2,49 @@
 
 
 {% block title %}Posts{% endblock title %}
+{% load static %}
 
 
 {% block content %}
-<h1>List of Posts</h1>
+<style>
+    body {
+        background: url("/static/img/listbg.jpg");
+        background-size: cover;
+        background-position: center;
+        height: 100%;
+        background-repeat: no-repeat;
+    }
 
-<ul>
-    {% for post in post_list %}
-    <li>{{ post.title }}</li>
-    {% endfor %}
-</ul>
+    h1 {
+        text-align: center;
+        color: #ffffffd7;
+        text-shadow: #6f42c1 2px 0 10px;
+    }
+
+    .list-section {
+        position: relative;
+        height: 400px;
+        color: #495057
+    }
+
+    .list-text {
+        width: 60%;
+        padding: 20px;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgba(255, 255, 2555, 0.7);
+        border-radius: 10px;
+    }
+</style>
+<div class="list-section">
+    <h1>List of Posts</h1>
+    <div class="list-text">
+        <ul>
+            {% for post in post_list %}
+            <li>{{ post.title }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock content %}

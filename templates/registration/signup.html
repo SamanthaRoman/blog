@@ -4,10 +4,46 @@
 {% block title %}Sign Up{% endblock title %}
 
 {% block content %}
-<h1>Sign Up</h1>
-<form methond="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Log In" class="btn btn-success">
-</form>
+
+<style>
+    body {
+        background: url("/static/img/signup.jpg");
+        background-size: cover;
+        background-position: top;
+        height: 100%;
+        margin-bottom: 100px;
+    }
+
+    .sign-section {
+        position: relative;
+        height: 400px;
+        color: #495057
+    }
+
+    h1 {
+        text-align: center;
+        color: #ffffffd7;
+        text-shadow: #6f42c1 2px 0 10px;
+    }
+
+    .form-text {
+        width: 60%;
+        padding: 20px;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: rgba(255, 255, 2555, 0.7);
+        border-radius: 10px;
+    }
+</style>
+<div class="sign-section">
+    <h1>Sign Up</h1>
+    <div class="form-text">
+        <form methond="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Log In" class="btn btn-success">
+        </form>
+    </div>
+</div>
 {% endblock content %}
